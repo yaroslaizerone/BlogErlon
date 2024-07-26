@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Posts;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Posts\StoreRequest;
 use App\Models\Post;
-use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     public function index(StoreRequest $request)
     {
         $data = $request->validated();
-        try {
-            Post::firstOrCreate($data);
-        } catch (\Exception $ex) {
-            dd($ex);
-        }
-
+        $this->service->store($data);
 
         return redirect()->route('admin.posts.index');
     }

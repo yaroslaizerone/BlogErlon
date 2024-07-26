@@ -5,10 +5,10 @@
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="pe-3">{{ $post->title }}</h1>
-                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="text-success"> <i
+                        <h1 class="pe-3">{{ $user -> title }}</h1>
+                        <a href="{{ route('admin.user.edit', $user -> id) }}" class="text-success"> <i
                                 class="bi bi-pencil"></i></a>
-                        <form action="{{ route('admin.posts.delete', $post->id) }}"
+                        <form action="{{ route('admin.user.delete', $user -> id) }}"
                               method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
@@ -19,9 +19,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Посты</a></li>
+                            <li class="breadcrumb-item"><a href="#">Пользователь</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ $post -> title }}
+                                {{ $user -> title }}
                             </li>
                         </ol>
                     </div>
@@ -32,7 +32,7 @@
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
                     <div class="col-2">
-                        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Добавить пост</a>
+                        <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Добавить пользователя</a>
                     </div>
                     <div class="card mb-4 mt-4">
                         <div class="card-body">
@@ -40,11 +40,11 @@
                                 <tbody>
                                 <tr class="align-middle">
                                     <td>ID</td>
-                                    <td>{{ $post -> id }}</td>
+                                    <td>{{ $user -> id }}</td>
                                 </tr>
                                 <tr class="align-middle">
-                                    <td>Название</td>
-                                    <td>{{ $post -> title }}</td>
+                                    <td>Имя</td>
+                                    <td>{{ $user -> title }}</td>
                                 </tr>
                                 </tbody>
                             </table>

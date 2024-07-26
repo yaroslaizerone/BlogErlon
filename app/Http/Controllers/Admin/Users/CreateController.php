@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CreateController extends Controller
 {
     public function index()
     {
-        return view('admin.categories.create');
+        return view('admin.user.create');
     }
 }

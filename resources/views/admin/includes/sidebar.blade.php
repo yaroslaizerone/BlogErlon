@@ -8,6 +8,25 @@
         <nav class="mt-2"> <!--begin::Sidebar Menu-->
 
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                 <li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
+                            class="nav-icon bi bi-person"></i>
+                        <p>
+                            Пользователи
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link active"> <i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Просмотр пользователей</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.user.create') }}" class="nav-link active">
+                                <i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Добавление пользователей</p>
+                            </a></li>
+                    </ul>
+                </li>
                 <li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
                             class="nav-icon bi bi-boxes"></i>
                         <p>
@@ -66,6 +85,10 @@
                     </ul>
                 </li>
                 <li class="nav-header">ПАНЕЛЬ УПРАВЛЕНИЯ</li>
+                <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link"> <i
+                            class="nav-icon bi bi-person"></i>
+                        <p>Пользователи</p>
+                    </a></li>
                 <li class="nav-item"><a href="{{ route('admin.categories.index') }}" class="nav-link"> <i
                             class="nav-icon bi bi-boxes"></i>
                         <p>Категории</p>

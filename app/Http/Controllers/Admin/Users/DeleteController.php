@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Categories\UpdateRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class DeleteController extends Controller
 {

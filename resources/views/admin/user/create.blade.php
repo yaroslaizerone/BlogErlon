@@ -5,13 +5,13 @@
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3 class="mb-0">Добавление категории</h3>
+                        <h3 class="mb-0">Добавление пользователя</h3>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Добавление категории
+                                Добавление пользователя
                             </li>
                         </ol>
                     </div>
@@ -27,25 +27,47 @@
                     <div class="col-12 mt-4">
                         <div class="card card-primary card-outline mb-4 col-6"> <!--begin::Header-->
                             <div class="card-header">
-                                <div class="card-title">Укажите данные новой категории</div>
+                                <div class="card-title">Укажите данные нового пользователя</div>
                             </div> <!--end::Header--> <!--begin::Form-->
-                            <form action="{{ route('admin.categories.store') }}" method="POST" class="col-6">
+                            <form action="{{ route('admin.user.store') }}" method="POST" class="col-6">
                                 <!--begin::Body-->
                                 @csrf
                                 <div class="card-body">
                                     <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
-                                            Название категории</label>
-                                        <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+                                            Имя пользователя</label>
+                                        <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                                aria-describedby="emailHelp" required>
-                                        @error('title')
+                                        @error('name')
                                         <div class="text-danger"> Это поле должно быть заполнено</div>
                                         @enderror
                                         <div id="emailHelp" class="form-text">
-                                            Укажите название категории.
+                                            {{$message}}
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
+                                            E-mail пользователя</label>
+                                        <input type="text" name="email" class="form-control" id="exampleInputEmail1"
+                                               aria-describedby="emailHelp" required>
+                                        @error('email')
+                                        <div class="text-danger"> Это поле должно быть заполнено</div>
+                                        @enderror
+                                        <div id="emailHelp" class="form-text">
+                                            {{$message}}
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
+                                           Пароль пользователя</label>
+                                        <input type="text" name="password" class="form-control" id="exampleInputEmail1"
+                                               aria-describedby="emailHelp" required>
+                                        @error('password')
+                                        <div class="text-danger"> Это поле должно быть заполнено</div>
+                                        @enderror
+                                        <div id="passwordHelp" class="form-text">
+                                            {{$message}}
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Добавить категорию</button>
+                                        <button type="submit" class="btn btn-primary">Добавить пользователя</button>
                                     </div> <!--end::Footer-->
                                 </div>
                             </form> <!--end::Form-->

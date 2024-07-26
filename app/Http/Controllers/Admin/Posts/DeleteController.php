@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Posts;
 
-use App\Http\Controllers\Controller;
-use App\Models\Tag;
+use App\Models\Post;
 
 
-class DeleteController extends Controller
+class DeleteController extends BaseController
 {
-    public function index(Tag $tag)
+    public function index(Post $post)
     {
-        $tag->delete();
+        $post->delete();
         return redirect()->route('admin.posts.index');
     }
 }

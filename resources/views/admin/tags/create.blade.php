@@ -29,22 +29,25 @@
                             <div class="card-header">
                                 <div class="card-title">Укажите данные нового тэга</div>
                             </div> <!--end::Header--> <!--begin::Form-->
-                            <form action="{{ route('admin.tags.store') }}" method="POST" class="col-6"> <!--begin::Body-->
+                            <form action="{{ route('admin.tags.store') }}" method="POST" class="col-6">
+                                <!--begin::Body-->
                                 @csrf
                                 <div class="card-body">
                                     <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
                                             Название тэга</label>
-                                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+                                               aria-describedby="emailHelp" required>
                                         @error('title')
-                                            <div class="text-danger"> Это поле должно быть заполнено </div>
+                                        <div class="text-danger"> Это поле должно быть заполнено</div>
                                         @enderror
                                         <div id="emailHelp" class="form-text">
                                             Укажите название тэга.
                                         </div>
                                     </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Добавить тэг</button>
-                                </div> <!--end::Footer-->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Добавить тэг</button>
+                                    </div> <!--end::Footer-->
+                                </div>
                             </form> <!--end::Form-->
                         </div>
                     </div> <!--begin::Col-->

@@ -1,33 +1,41 @@
 <?php
 
-use App\Http\Controllers\Admin\Categories\IndexController as Categories;
 use App\Http\Controllers\Admin\Categories\CreateController as CategoriesCreate;
-use App\Http\Controllers\Admin\Categories\StoreController as CategoriesStore;
-use App\Http\Controllers\Admin\Categories\ShowController as CategoriesShow;
-use App\Http\Controllers\Admin\Categories\EditController as CategoriesEdit;
-use App\Http\Controllers\Admin\Categories\UpdateController as CategoriesUpdate;
 use App\Http\Controllers\Admin\Categories\DeleteController as CategoriesDelete;
+use App\Http\Controllers\Admin\Categories\EditController as CategoriesEdit;
+use App\Http\Controllers\Admin\Categories\IndexController as Categories;
+use App\Http\Controllers\Admin\Categories\ShowController as CategoriesShow;
+use App\Http\Controllers\Admin\Categories\StoreController as CategoriesStore;
+use App\Http\Controllers\Admin\Categories\UpdateController as CategoriesUpdate;
 
-use App\Http\Controllers\Admin\Tags\IndexController as Tags;
-use App\Http\Controllers\Admin\Tags\CreateController as TagsCreate;
-use App\Http\Controllers\Admin\Tags\StoreController as TagsStore;
-use App\Http\Controllers\Admin\Tags\ShowController as TagsShow;
-use App\Http\Controllers\Admin\Tags\EditController as TagsEdit;
-use App\Http\Controllers\Admin\Tags\UpdateController as TagsUpdate;
-use App\Http\Controllers\Admin\Tags\DeleteController as TagsDelete;
+use App\Http\Controllers\Admin\Users\CreateController as UsersCreate;
+use App\Http\Controllers\Admin\Users\DeleteController as UsersDelete;
+use App\Http\Controllers\Admin\Users\EditController as UsersEdit;
+use App\Http\Controllers\Admin\Users\IndexController as Users;
+use App\Http\Controllers\Admin\Users\ShowController as UsersShow;
+use App\Http\Controllers\Admin\Users\StoreController as UsersStore;
+use App\Http\Controllers\Admin\Users\UpdateController as UsersUpdate;
 
-use App\Http\Controllers\Admin\Posts\IndexController as Posts;
 use App\Http\Controllers\Admin\Posts\CreateController as PostsCreate;
-use App\Http\Controllers\Admin\Posts\StoreController as PostsStore;
-use App\Http\Controllers\Admin\Posts\ShowController as PostsShow;
-use App\Http\Controllers\Admin\Posts\EditController as PostsEdit;
-use App\Http\Controllers\Admin\Posts\UpdateController as PostsUpdate;
 use App\Http\Controllers\Admin\Posts\DeleteController as PostsDelete;
+use App\Http\Controllers\Admin\Posts\EditController as PostsEdit;
+use App\Http\Controllers\Admin\Posts\IndexController as Posts;
+use App\Http\Controllers\Admin\Posts\ShowController as PostsShow;
+use App\Http\Controllers\Admin\Posts\StoreController as PostsStore;
+use App\Http\Controllers\Admin\Posts\UpdateController as PostsUpdate;
 
-use App\Http\Controllers\Admin\IndexController as Admin;
+use App\Http\Controllers\Admin\Tags\CreateController as TagsCreate;
+use App\Http\Controllers\Admin\Tags\DeleteController as TagsDelete;
+use App\Http\Controllers\Admin\Tags\EditController as TagsEdit;
+use App\Http\Controllers\Admin\Tags\IndexController as Tags;
+use App\Http\Controllers\Admin\Tags\ShowController as TagsShow;
+use App\Http\Controllers\Admin\Tags\StoreController as TagsStore;
+use App\Http\Controllers\Admin\Tags\UpdateController as TagsUpdate;
+
 use App\Http\Controllers\Main\IndexController as Main;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\IndexController as Admin;
 
 
 Route::group(['namespace' => 'Main'], function () {
@@ -66,6 +74,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/{tag}/edit', [TagsEdit::class, 'index'])->name('admin.tags.edit');
         Route::patch('/{tag}', [TagsUpdate::class, 'index'])->name('admin.tags.update');
         Route::delete('/{tag}', [TagsDelete::class, 'index'])->name('admin.tags.delete');;
+    });
+    Route::group(['namespace' => 'Users', 'prefix' => 'users'], function () {
+        Route::get('/', [Users::class, 'index'])->name('admin.user.index');
+        Route::get('/create', [UsersCreate::class, 'index'])->name('admin.user.create');
+        Route::post('/store', [UsersStore::class, 'index'])->name('admin.user.store');
+        Route::get('/{user}', [UsersShow::class, 'index'])->name('admin.user.show');
+        Route::get('/{user}/edit', [UsersEdit::class, 'index'])->name('admin.user.edit');
+        Route::patch('/{user}', [UsersUpdate::class, 'index'])->name('admin.user.update');
+        Route::delete('/{user}', [UsersDelete::class, 'index'])->name('admin.user.delete');;
     });
 });
 
