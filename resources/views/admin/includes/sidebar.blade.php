@@ -8,7 +8,13 @@
         <nav class="mt-2"> <!--begin::Sidebar Menu-->
 
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                 <li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
+                <li class="nav-item"><a href="{{ route('admin.main.index') }}" class="nav-link"> <i
+                            class="nav-icon bi bi-house-door"></i>
+                        <p>Главная</p>
+                    </a></li>
+
+
+                <li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
                             class="nav-icon bi bi-person"></i>
                         <p>
                             Пользователи

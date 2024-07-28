@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\Tags\StoreController as TagsStore;
 use App\Http\Controllers\Admin\Tags\UpdateController as TagsUpdate;
 
 use App\Http\Controllers\Main\IndexController as Main;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\IndexController as Admin;
@@ -42,11 +43,11 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/', [Main::class, 'index']);
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'verified', AdminMiddleware::class]], function () {
     Route::group(['namespace' => 'Main'], function () {
-        Route::get('/', [Admin::class, 'index']);
+        Route::get('/', [Admin::class, 'index'])->name('admin.main.index');
     });
     Route::group(['namespace' => 'Posts', 'prefix' => 'posts'], function () {
         Route::get('/', [Posts::class, 'index'])->name('admin.posts.index');

@@ -5,7 +5,7 @@
             <div class="container-fluid"> <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="pe-3">{{ $user -> title }}</h1>
+                        <h1 class="pe-3">{{ $user -> name }}</h1>
                         <a href="{{ route('admin.user.edit', $user -> id) }}" class="text-success"> <i
                                 class="bi bi-pencil"></i></a>
                         <form action="{{ route('admin.user.delete', $user -> id) }}"
@@ -19,9 +19,10 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Пользователь</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Пользватели</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ $user -> title }}
+                                {{ $user -> name }}
                             </li>
                         </ol>
                     </div>
@@ -44,7 +45,15 @@
                                 </tr>
                                 <tr class="align-middle">
                                     <td>Имя</td>
-                                    <td>{{ $user -> title }}</td>
+                                    <td>{{ $user -> name }}</td>
+                                </tr>
+                                <tr class="align-middle">
+                                    <td>Роль</td>
+                                    <td>{{ $user -> getRoleName() }}</td>
+                                </tr>
+                                <tr class="align-middle">
+                                    <td>E-mail</td>
+                                    <td>{{ $user -> email }}</td>
                                 </tr>
                                 </tbody>
                             </table>

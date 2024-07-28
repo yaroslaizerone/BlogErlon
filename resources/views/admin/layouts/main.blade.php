@@ -12,7 +12,7 @@
           content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
     <meta name="keywords"
           content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -39,18 +39,35 @@
 <!-- App Wrapper -->
 <div class="app-wrapper">
     <!-- Header -->
-    <nav class="app-header navbar navbar-expand bg-body">
+    <nav class="app-header navbar navbar-expand bg-body d-flex justify-content-between">
         <!-- Container -->
         <div class="container-fluid">
             <!-- Start Navbar Links -->
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i
-                            class="bi bi-list"></i> </a></li>
+                <li class="nav-item">
+                    <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                        <i class="bi bi-list"></i>
+                    </a>
+                </li>
             </ul>
+            <div class="d-flex ms-auto">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input class="btn btn-outline-primary" type="submit" value="Выйти">
+                </form>
+                <form class="ms-2" action="{{ route('login') }}" method="POST">
+                    @csrf
+                    <input class="btn btn-primary" type="submit" value="Войти">
+                </form>
+            </div>
             <!-- End Navbar Links -->
+
+            <!-- Login Button -->
+
         </div>
         <!-- End Container -->
     </nav>
+
     <!-- End Header -->
     <!-- Sidebar -->
     @include('admin.includes.sidebar')

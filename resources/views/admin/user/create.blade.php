@@ -9,7 +9,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Пользватели</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Добавление пользователя
                             </li>
@@ -33,38 +34,40 @@
                                 <!--begin::Body-->
                                 @csrf
                                 <div class="card-body">
-                                    <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
-                                            Имя пользователя</label>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Имя пользователя</label>
                                         <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                                aria-describedby="emailHelp" required>
                                         @error('name')
-                                        <div class="text-danger"> Это поле должно быть заполнено</div>
-                                        @enderror
-                                        <div id="emailHelp" class="form-text">
-                                            {{$message}}
+                                        <div class="text-danger">
+                                            {{ $message }}
                                         </div>
+                                        @enderror
                                     </div>
-                                    <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
-                                            E-mail пользователя</label>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">E-mail пользователя</label>
                                         <input type="text" name="email" class="form-control" id="exampleInputEmail1"
                                                aria-describedby="emailHelp" required>
                                         @error('email')
-                                        <div class="text-danger"> Это поле должно быть заполнено</div>
-                                        @enderror
-                                        <div id="emailHelp" class="form-text">
-                                            {{$message}}
+                                        <div id="emailHelp" class="text-danger">
+                                            {{ $message }}
                                         </div>
+                                        @enderror
                                     </div>
-                                    <div class="mb-3"><label for="exampleInputEmail1" class="form-label">
-                                           Пароль пользователя</label>
-                                        <input type="text" name="password" class="form-control" id="exampleInputEmail1"
-                                               aria-describedby="emailHelp" required>
-                                        @error('password')
-                                        <div class="text-danger"> Это поле должно быть заполнено</div>
-                                        @enderror
-                                        <div id="passwordHelp" class="form-text">
-                                            {{$message}}
+                                    <div class="form-group w-50 mt-4">
+                                        <label>Выберите роль пользователя</label>
+                                        <select class="form-control" name="role">
+                                            @foreach($roles as $id => $role)
+                                                <option value="{{ $id }}" {{ $id == old('role') ? 'selected' : '' }}>
+                                                    {{ $role }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('role')
+                                        <div class="text-danger">
+                                            {{ $message }}
                                         </div>
+                                        @enderror
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Добавить пользователя</button>

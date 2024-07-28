@@ -9,9 +9,10 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Посты</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Добавление постов
+                                Добавление поста
                             </li>
                         </ol>
                     </div>

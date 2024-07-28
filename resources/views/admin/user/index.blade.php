@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Пользователи
                             </li>
@@ -31,6 +31,8 @@
                                 <tr>
                                     <th style="width: 10px">ID</th>
                                     <th>Имя</th>
+                                    <th>Почта</th>
+                                    <th>Роль</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +40,8 @@
                                     <tr class="align-middle align-items-center">
                                         <td>{{ $user -> id }}</td>
                                         <td>{{ $user -> name }}</td>
+                                        <td>{{ $user -> email }}</td>
+                                        <td>{{ $user -> getRoleName() }}</td>
                                         <td>
                                             <a href="{{ route('admin.user.show', $user -> id) }}"> <i
                                                     class="bi bi-eye"></i></a>

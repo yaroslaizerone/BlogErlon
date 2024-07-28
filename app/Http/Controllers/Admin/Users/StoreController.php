@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreRequest;
+use App\Jobs\StoreUserJob;
+use App\Mail\User\PasswordMail;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class StoreController extends Controller
 {
@@ -13,8 +18,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         try {
-            $data['password'] = Hash::make($data['password']);
-            User::firstOrCreate(['email' => $data['email']],$data);
+            StoreUserJob::dispatch($data);
         } catch (\Exception $ex) {
             dd($ex);
         }

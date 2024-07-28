@@ -22,12 +22,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="edicaMainNav">
-                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0 d-flex justify-content-between">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input class="btn btn-outline-primary" type="submit" value="Выйти">
+                            </form>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>

@@ -9,9 +9,10 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Пользватели</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Редактирование пользователя\{{ $user -> id }}
+                                Редактирование пользователя\{{ $user -> name }}
                             </li>
                         </ol>
                     </div>
@@ -55,6 +56,22 @@
                                         <div id="emailHelp" class="form-text">
                                             Укажите e-mail пользователя.
                                         </div>
+                                    </div>
+                                    <div class="form-group w-50 mt-4">
+                                        <label>Выберите роль пользователя</label>
+                                        <select class="form-control" name="role">
+                                            @foreach($roles as $id=>$role)
+                                                <option
+                                                    value="{{ $id }}" {{ $id == $user->role ? 'selected' : '' }}>
+                                                    {{ $role }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        @error('role')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Обновить пользователя</button>
