@@ -32,6 +32,11 @@ use App\Http\Controllers\Admin\Tags\ShowController as TagsShow;
 use App\Http\Controllers\Admin\Tags\StoreController as TagsStore;
 use App\Http\Controllers\Admin\Tags\UpdateController as TagsUpdate;
 
+use App\Http\Controllers\Personal\Main\IndexController as Personal;
+use App\Http\Controllers\Personal\Liked\IndexController as Liked;
+use App\Http\Controllers\Personal\Liked\DeleteController as LikedDelete;
+use App\Http\Controllers\Personal\Comment\IndexController as Comment;
+
 use App\Http\Controllers\Main\IndexController as Main;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +49,19 @@ Route::group(['namespace' => 'Main'], function () {
 });
 
 Auth::routes(['verify' => true]);
+
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', [Personal::class, 'index'])->name('personal.main.index');
+    });
+     Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function () {
+        Route::get('/', [Liked::class, 'index'])->name('personal.liked.index');
+        Route::delete('/{post}', [LikedDelete::class, 'index'])->name('personal.liked.delete');
+    });
+      Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
+        Route::get('/', [Comment::class, 'index'])->name('personal.comment.index');
+    });
+});
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'verified', AdminMiddleware::class]], function () {
     Route::group(['namespace' => 'Main'], function () {
